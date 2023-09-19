@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css"
+    />
+
+    <style>
+      .container {
+        display: flex;
+      }
+      .map {
+        width: 500px;
+        height: 500px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="map" class="map"></div>
+      <div>
+        <input type="text" id="lat" placeholder="" />
+        <input type="text" id="lng" placeholder="" />
+
+        <button id="addMarkerButton">Add marker button</button>
+        <ul>
+          <li>1</li>
+          <li>1</li>
+          <li>1</li>
+          <li>1</li>
+        </ul>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+    <script>
+      const lat = document.getElementById("lat");
+      const lng = document.getElementById("lng");
+      const markers = []
+
+      var map = L.map("map");
+      map.setView([51.505, -0.09], 13);
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "© OpenStreetMap contributors",
+      }).addTo(map);
+
+      //   L.Routing.control({
+      //     waypoints: [null],
+      //     routeWhileDragging: true,
+      //   }).addTo(map);
+
+      //L.Routing.Plan({}).addTo(map);
+      //   const route1 = L.Routing.control({
+      //     waypoints: [L.latLng(57.74, 11.94), L.latLng(57.6792, 11.949)],
+      //     routeWhileDragging: true,
+      //   })
+      //route1.route()
+
+      function onMapClick(e) {
+        
+        console.log(e.latlng.lat, e.latlng.lng);
+        //alert("You clicked the map at " + e.latlng);
+        lat.value = e.latlng.lat
+        lng.value = e.latlng.lng
+
+
+        
+      }
+
+      function addMarker(lat, lng) {
+        return L.marker([lat, lng]).addTo(map);
+      }
+
+      map.on("click", onMapClick);
+
+      //console.log(route1.getRouter());
+
+      document.getElementById("addMarkerButton").addEventListener("click", function () {
+        if (lat.value === "" || lng.value === "") {
+            return;
+        }
+
+        const marker = addMarker(lat.value, lng.value)
+        markers.push(marker)
+
+        console.log(map)
+      })
+
+
+
+    </script>
+  </body>
+</html>
