@@ -1,0 +1,37 @@
+.map {
+    width: 800px;
+    height: 800px;
+}
+
+// .form-group {
+//     width: 200px;
+// }
+
+.w200 {
+    width: 200px;
+}
+.wrapper {
+    padding: 1rem;
+}
+.group {
+    display: flex;
+    flex-direction: row;
+    column-gap: 20px;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+}
+
+.form1 {
+    width: 200px;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.list1 {
+    width: 200px;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
