@@ -1,3 +1,8 @@
+npm install bootstrap bootstrap-icons
+npm install leaflet leaflet-routing-machine
+npm install --save-dev @types/leaflet @types/leaflet-routing-machine
+
+
 "styles": [
               "node_modules/bootstrap/scss/bootstrap.scss",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
