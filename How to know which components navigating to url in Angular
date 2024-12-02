@@ -1,0 +1,10 @@
+
+constructor(private router: Router) {
+    this.router.events
+      .pipe(filter((e) => e instanceof RoutesRecognized))
+      .subscribe((routesRecognized) => {
+        console.log(
+          `${routesRecognized.state.root.children[0].component?.name} naviagte to ${routesRecognized.url}`
+        );
+      });
+  }
